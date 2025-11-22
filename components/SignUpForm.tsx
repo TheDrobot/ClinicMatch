@@ -16,7 +16,7 @@ const SignUpForm: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full h-[1350px] md:h-[1050px] bg-white rounded-[25px] shadow-2xl overflow-y-auto border border-slate-200">
+    <div className="w-full h-[1200px] md:h-[1050px] bg-white rounded-[25px] shadow-2xl overflow-y-auto border border-slate-200">
       <iframe
         src="https://api.leadconnectorhq.com/widget/form/9vKhlad88DR6LG5fVYDF"
         style={{ width: '100%', height: '100%', border: 'none', borderRadius: '3px' }}
