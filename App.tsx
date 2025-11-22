@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Card, { BentoGrid } from './components/BentoGrid';
-import { BriefcaseIcon, TrendingUpIcon, UsersIcon, SearchIcon, ShieldCheckIcon, StarIcon, ActivityIcon, ArrowRightIcon, LockIcon, CheckCircleIcon, XCircleIcon, ChevronDownIcon, BarChartIcon, LogoTooth, MapPinIcon, EyeOffIcon, BellIcon, SparklesIcon, FileTextIcon } from './components/Icons';
+import { BriefcaseIcon, TrendingUpIcon, UsersIcon, SearchIcon, ShieldCheckIcon, StarIcon, ActivityIcon, ArrowRightIcon, LockIcon, CheckCircleIcon, XCircleIcon, ChevronDownIcon, BarChartIcon, LogoTooth, MapPinIcon, EyeOffIcon, BellIcon, SparklesIcon, FileTextIcon, MenuIcon, XIcon } from './components/Icons';
 import GeminiAdvisor from './components/GeminiAdvisor';
 import SignUpForm from './components/SignUpForm';
 import HowItWorks from './components/HowItWorks';
@@ -91,6 +91,7 @@ type Page = 'home' | 'how-it-works' | 'benefits' | 'salaries' | 'testimonials';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>('home');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   // Scroll to top when page changes
   useEffect(() => {
@@ -136,17 +137,41 @@ const App: React.FC = () => {
                 <span className="block text-[10px] text-slate-500 font-medium tracking-widest uppercase">Italia</span>
             </div>
           </button>
+
+          {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
             <button onClick={() => handleNavClick('how-it-works')} className={`hover:text-slate-900 transition-colors ${currentPage === 'how-it-works' ? 'text-blue-600 font-bold' : ''}`}>Come Funziona</button>
             <button onClick={() => handleNavClick('benefits')} className={`hover:text-slate-900 transition-colors ${currentPage === 'benefits' ? 'text-blue-600 font-bold' : ''}`}>Vantaggi</button>
             <button onClick={() => handleNavClick('salaries')} className={`hover:text-slate-900 transition-colors ${currentPage === 'salaries' ? 'text-blue-600 font-bold' : ''}`}>Stipendi</button>
             <button onClick={() => handleNavClick('testimonials')} className={`hover:text-slate-900 transition-colors ${currentPage === 'testimonials' ? 'text-blue-600 font-bold' : ''}`}>Testimonianze</button>
+            <button onClick={() => handleNavClick('home', 'join')} className="group relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white transition-all duration-200 bg-slate-900 font-pj rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-900 hover:bg-slate-800">
+              Accesso Partner
+              <ArrowRightIcon className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            </button>
           </div>
-          <button onClick={() => handleNavClick('home', 'join')} className="group relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white transition-all duration-200 bg-slate-900 font-pj rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-900 hover:bg-slate-800">
-            Accesso Partner
-            <ArrowRightIcon className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+
+          {/* Mobile Menu Button */}
+          <button 
+            className="md:hidden p-2 text-slate-900 hover:bg-slate-100 rounded-lg transition-colors"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <XIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
           </button>
         </div>
+
+        {/* Mobile Menu Dropdown */}
+        {mobileMenuOpen && (
+          <div className="md:hidden absolute top-20 left-0 w-full bg-white border-b border-slate-200 shadow-xl z-50 px-6 py-8 flex flex-col gap-6 animate-fade-in">
+            <button onClick={() => { handleNavClick('how-it-works'); setMobileMenuOpen(false); }} className="text-lg font-medium text-slate-900 hover:text-blue-600 transition-colors text-left">Come Funziona</button>
+            <button onClick={() => { handleNavClick('benefits'); setMobileMenuOpen(false); }} className="text-lg font-medium text-slate-900 hover:text-blue-600 transition-colors text-left">Vantaggi</button>
+            <button onClick={() => { handleNavClick('salaries'); setMobileMenuOpen(false); }} className="text-lg font-medium text-slate-900 hover:text-blue-600 transition-colors text-left">Stipendi</button>
+            <button onClick={() => { handleNavClick('testimonials'); setMobileMenuOpen(false); }} className="text-lg font-medium text-slate-900 hover:text-blue-600 transition-colors text-left">Testimonianze</button>
+            <div className="h-px bg-slate-100 my-2"></div>
+            <button onClick={() => { handleNavClick('home', 'join'); setMobileMenuOpen(false); }} className="w-full py-3 bg-slate-100 text-slate-900 font-bold rounded-xl hover:bg-slate-200 transition-colors">
+              Accesso Partner
+            </button>
+          </div>
+        )}
       </nav>
 
       {currentPage === 'how-it-works' ? (
