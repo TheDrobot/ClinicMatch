@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
 import Card, { BentoGrid } from './components/BentoGrid';
-import { BriefcaseIcon, TrendingUpIcon, UsersIcon, SearchIcon, ShieldCheckIcon, StarIcon, ActivityIcon, ArrowRightIcon, LockIcon, CheckCircleIcon, XCircleIcon, ChevronDownIcon, BarChartIcon, LogoTooth, LogoMedical, LogoShield, MapPinIcon, BanknoteIcon, EyeOffIcon, BellIcon, SparklesIcon, FileTextIcon } from './components/Icons';
+import { BriefcaseIcon, TrendingUpIcon, UsersIcon, SearchIcon, ShieldCheckIcon, StarIcon, ActivityIcon, ArrowRightIcon, LockIcon, CheckCircleIcon, XCircleIcon, ChevronDownIcon, BarChartIcon, LogoTooth, MapPinIcon, EyeOffIcon, BellIcon, SparklesIcon, FileTextIcon } from './components/Icons';
 import GeminiAdvisor from './components/GeminiAdvisor';
 import SignUpForm from './components/SignUpForm';
 import HowItWorks from './components/HowItWorks';
@@ -45,13 +44,17 @@ const LiveTicker = () => {
 
 // Partner Logos Component
 const PartnerLogos = () => (
-  <div className="w-full bg-white border-y border-slate-100 py-8 overflow-hidden">
-    <p className="text-center text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">Fidato dai migliori studi odontoiatrici</p>
-    <div className="flex justify-center items-center gap-12 md:gap-24 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
-       <div className="flex items-center gap-2 font-bold text-xl text-slate-800"><LogoTooth className="w-8 h-8" /> DentalPro Elite</div>
-       <div className="flex items-center gap-2 font-bold text-xl text-slate-800 hidden sm:flex"><LogoMedical className="w-8 h-8" /> MedClinics</div>
-       <div className="flex items-center gap-2 font-bold text-xl text-slate-800"><LogoShield className="w-8 h-8" /> OrthoGuard</div>
-       <div className="flex items-center gap-2 font-bold text-xl text-slate-800 hidden md:flex"><StarIcon className="w-8 h-8" /> StarSmile</div>
+  <div className="w-full bg-white border-y border-slate-100 py-10 overflow-hidden">
+    <p className="text-center text-xs font-bold text-slate-400 uppercase tracking-widest mb-8">Fidato dai migliori studi odontoiatrici</p>
+    <div className="flex justify-center items-center flex-wrap gap-12 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500 px-6">
+       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png" className="h-6 md:h-8 object-contain hidden" alt="Hidden" /> {/* Dummy hidden for spacing logic if needed */}
+       
+       {/* Replace with realistic looking dental/corporate logos via placeholder services */}
+       <img src="https://img.logoipsum.com/286.svg" alt="DentalPro Elite" className="h-8 md:h-10" />
+       <img src="https://img.logoipsum.com/245.svg" alt="MedClinics" className="h-8 md:h-10 hidden sm:block" />
+       <img src="https://img.logoipsum.com/296.svg" alt="OrthoGuard" className="h-8 md:h-10" />
+       <img src="https://img.logoipsum.com/259.svg" alt="StarSmile" className="h-8 md:h-10 hidden md:block" />
+       <img src="https://img.logoipsum.com/280.svg" alt="DentalGroup" className="h-8 md:h-10 hidden lg:block" />
     </div>
   </div>
 );
@@ -183,11 +186,11 @@ const App: React.FC = () => {
                 </button>
                 <div className="flex items-center gap-4 px-6 py-4 bg-white border border-slate-200 rounded-2xl shadow-sm">
                    <div className="flex -space-x-3">
-                      {[1,2,3].map(i => (
-                        <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-600">
-                           {i === 3 ? '+' : ''}
-                        </div>
-                      ))}
+                      <img src="https://i.pravatar.cc/150?u=1" className="w-8 h-8 rounded-full border-2 border-white object-cover" alt="User" />
+                      <img src="https://i.pravatar.cc/150?u=2" className="w-8 h-8 rounded-full border-2 border-white object-cover" alt="User" />
+                      <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-900 flex items-center justify-center text-[10px] font-bold text-white">
+                         +1k
+                      </div>
                    </div>
                    <div className="text-left">
                       <div className="text-xs text-slate-500 font-medium">Manager attivi</div>
@@ -575,9 +578,10 @@ const App: React.FC = () => {
 
               <div className="flex items-center gap-4 pt-4 opacity-70">
                  <div className="flex -space-x-2">
-                    {[1,2,3,4].map(i => (
-                        <div key={i} className="w-8 h-8 rounded-full border-2 border-slate-900 bg-slate-700"></div>
-                    ))}
+                    <img src="https://i.pravatar.cc/150?u=4" className="w-8 h-8 rounded-full border-2 border-slate-900 object-cover" alt="User" />
+                    <img src="https://i.pravatar.cc/150?u=8" className="w-8 h-8 rounded-full border-2 border-slate-900 object-cover" alt="User" />
+                    <img src="https://i.pravatar.cc/150?u=12" className="w-8 h-8 rounded-full border-2 border-slate-900 object-cover" alt="User" />
+                    <div className="w-8 h-8 rounded-full border-2 border-slate-900 bg-slate-700 flex items-center justify-center text-[10px] font-bold text-white">+1k</div>
                  </div>
                  <div className="text-xs text-slate-400">Unisciti a 1,200+ colleghi</div>
               </div>

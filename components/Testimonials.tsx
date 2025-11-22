@@ -47,11 +47,22 @@ const AudioPlayer = ({ duration, name, role, audioUrl }: { duration: string, nam
 
     if (isPlaying) {
       audioRef.current.pause();
+      setIsPlaying(false);
     } else {
-      // Pause all other audios if needed, for now just play this one
-      audioRef.current.play();
+      // Pause all other audios? For simplicity, just play this one.
+      const playPromise = audioRef.current.play();
+      
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsPlaying(true);
+          })
+          .catch((error) => {
+            console.error("Audio playback prevented:", error);
+            setIsPlaying(false);
+          });
+      }
     }
-    setIsPlaying(!isPlaying);
   };
 
   return (

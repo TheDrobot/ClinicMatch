@@ -193,10 +193,10 @@ const Benefits: React.FC<BenefitsProps> = ({ onCtaClick }) => {
                         <span>Live Zoom</span>
                      </div>
                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-slate-700"></div>
+                        <img src="https://i.pravatar.cc/150?u=29" alt="Speaker" className="w-10 h-10 rounded-full object-cover" />
                         <div>
-                           <div className="text-sm font-bold">Dr. Marco B.</div>
-                           <div className="text-xs text-slate-400">HR Director, DentalPro</div>
+                           <div className="text-sm font-bold">Simona Fontana</div>
+                           <div className="text-xs text-slate-400">Clinic Manager Expert</div>
                         </div>
                      </div>
                   </div>
