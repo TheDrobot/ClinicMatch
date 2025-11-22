@@ -1,7 +1,12 @@
 import { GoogleGenAI } from "@google/genai";
 
 // Safety check to prevent white screen crash in Vite/Browser environments where process might be undefined
-const apiKey = typeof process !== 'undefined' && process.env ? process.env.API_KEY : '';
+let apiKey = '';
+try {
+  apiKey = typeof process !== 'undefined' && process.env ? process.env.API_KEY : '';
+} catch (e) {
+  // Ignore ReferenceError if process is not defined
+}
 
 // Initialize the client with the API key from the environment
 const ai = new GoogleGenAI({ apiKey: apiKey });
