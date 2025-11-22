@@ -1,10 +1,19 @@
 import { GoogleGenAI } from "@google/genai";
 
+// Safety check to prevent white screen crash in Vite/Browser environments where process might be undefined
+const apiKey = typeof process !== 'undefined' && process.env ? process.env.API_KEY : '';
+
 // Initialize the client with the API key from the environment
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ apiKey: apiKey });
 
 export const askGeminiAdvisor = async (question: string): Promise<string> => {
   try {
+    // Se non c'è la chiave, restituisci un messaggio di cortesia invece di far crashare l'app
+    if (!apiKey) {
+      console.warn("API Key mancante. Assicurati di aver impostato la variabile d'ambiente API_KEY su Vercel.");
+      return "La configurazione AI non è completa. Contatta l'amministratore.";
+    }
+
     const modelId = 'gemini-2.5-flash'; 
     
     const response = await ai.models.generateContent({
